@@ -1,76 +1,34 @@
-# Straits Aquatics Auctions v1
+# Straits Aquatics Auctions — Ocean Theme v2
 
-Public customer-facing auction application for Straits Aquatics.
+This is the public Straits Aquatics auction site with the deep-blue underwater theme.
 
-## Already configured
+## Upload to GitHub
 
-Supabase URL:
+Replace the files in the public repository:
 
-`https://addrfpwgtixvzokkkuyi.supabase.co`
+`StraitsAquatics/straits-aquatics-auctions`
 
-The application uses a Supabase **publishable** key only. No service-role or secret keys are included.
+with the files in this package.
 
-## Files
+Keep `auction.js` unchanged — this package preserves the working Supabase Auth, bidding, Buy It Now, winner and delivery logic.
 
-- `index.html` — public auction application
-- `auction.css` — responsive Straits Aquatics styling
-- `auction.js` — Supabase Auth, bidding, Realtime and winner workflow
-- `.nojekyll` — prevents GitHub Pages/Jekyll processing
-- `test-auction.sql` — optional temporary auction for end-to-end testing
+## Add your real logo
 
-## GitHub setup
+Upload your transparent Straits Aquatics logo PNG to the repository root with the exact filename:
 
-1. Create a new GitHub repository named `straits-aquatics-auctions`.
-2. Upload all files from this folder into the repository root.
-3. Commit them to the `main` branch.
-4. Go to **Settings → Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select `main` and `/ (root)`.
-7. Save.
+`straits-logo.png`
 
-GitHub Pages should then publish the app at an address similar to:
+The header is already coded to load that image. Until the logo file exists, the site displays a temporary text/fish fallback rather than a broken image.
 
-`https://YOUR-GITHUB-USERNAME.github.io/straits-aquatics-auctions/`
+Recommended logo file:
+- Transparent PNG
+- Full Straits Aquatics logo/wordmark if available
+- Roughly 700–1200 px wide for a crisp desktop header
 
-## Supabase Auth URL configuration
+## New visual asset
 
-Because this app uses a 6-digit email OTP rather than a magic-link redirect, OTP verification does not depend on a redirect URL. Still, before launch, set the Supabase **Site URL** to the final auction app URL and add the Webador auction URL as an allowed redirect URL for future compatibility.
+`ocean-bg.svg` is the coded underwater background. It contains no baked-in website text or buttons, so the real HTML remains responsive and interactive.
 
-## Testing
+## Deployment
 
-Run `test-auction.sql` in Supabase SQL Editor.
-
-Then:
-
-1. Open the GitHub auction page in Browser A.
-2. Register/sign in with Email A.
-3. Complete the one-time bidder profile.
-4. Place a bid.
-5. Open Browser B/private window.
-6. Register/sign in with Email B.
-7. Place a higher bid.
-8. Confirm Browser A sees the new current bid without refreshing.
-9. Test Buy It Now if desired.
-10. Test delivery choice from **My Auctions** after winning.
-
-The SQL file contains a cleanup command at the bottom.
-
-## Webador embed
-
-After the GitHub page is tested, embed it on the Webador `/auction` page with:
-
-```html
-<iframe
-  src="YOUR_GITHUB_PAGES_URL"
-  width="100%"
-  height="1700"
-  frameborder="0"
-  scrolling="yes"
-  style="width:100%;border:0;background:#fff;"
-  title="Straits Aquatics Auctions">
-</iframe>
-```
-
-## Important
-
-Do not add any Supabase secret/service-role key to these files or to GitHub.
+Commit the replacement files to `main`. GitHub Pages will redeploy automatically.

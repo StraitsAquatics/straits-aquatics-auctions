@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#064f80"/>
+      <stop offset="0.23" stop-color="#02456f"/>
+      <stop offset="0.55" stop-color="#02355b"/>
+      <stop offset="1" stop-color="#011b35"/>
+    </linearGradient>
+    <radialGradient id="surface" cx="55%" cy="0%" r="72%">
+      <stop offset="0" stop-color="#42d9ff" stop-opacity=".78"/>
+      <stop offset=".18" stop-color="#12a7dc" stop-opacity=".27"/>
+      <stop offset=".55" stop-color="#043c67" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8faff" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#72d9ff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur24"><feGaussianBlur stdDeviation="24"/></filter>
+    <filter id="blur8"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+
+  <rect width="1920" height="1200" fill="url(#ocean)"/>
+  <rect width="1920" height="760" fill="url(#surface)"/>
+
+  <!-- water surface -->
+  <path d="M0 25 C180 5 270 50 455 23 S760 6 960 31 1285 7 1490 27 1750 5 1920 22 V0 H0Z" fill="#7eeaff" opacity=".20"/>
+  <path d="M0 54 C210 20 310 73 510 43 S820 28 1015 55 1325 19 1535 48 1765 18 1920 37" fill="none" stroke="#82eaff" stroke-opacity=".20" stroke-width="4"/>
+  <path d="M0 82 C175 51 355 101 540 65 S875 59 1040 85 1370 49 1570 73 1780 54 1920 63" fill="none" stroke="#b8f6ff" stroke-opacity=".10" stroke-width="3"/>
+
+  <!-- shafts of light -->
+  <path d="M760 0 L930 0 1260 850 1030 850Z" fill="url(#ray)" opacity=".28" filter="url(#blur8)"/>
+  <path d="M980 0 L1085 0 1315 720 1170 720Z" fill="url(#ray)" opacity=".20" filter="url(#blur8)"/>
+  <path d="M590 0 L690 0 890 690 735 690Z" fill="url(#ray)" opacity=".17" filter="url(#blur8)"/>
+  <ellipse cx="1030" cy="120" rx="330" ry="125" fill="#35cfff" opacity=".08" filter="url(#blur24)"/>
+
+  <!-- distant fish silhouettes -->
+  <g fill="#001b31" opacity=".26">
+    <path d="M1210 510c36-25 78-21 109 3-31 26-73 31-109 5l-28 17 8-24-8-24z"/>
+    <path d="M1390 615c27-18 59-16 83 2-23 19-55 23-83 4l-21 13 6-18-6-18z"/>
+    <path d="M480 600c31-21 67-18 94 2-27 22-63 26-94 5l-24 14 7-20-7-20z"/>
+    <path d="M620 720c20-13 42-12 60 2-17 14-40 16-60 3l-15 9 4-13-4-13z"/>
+  </g>
+
+  <!-- bubbles -->
+  <g fill="none" stroke="#aeeeff" stroke-opacity=".38">
+    <circle cx="75" cy="510" r="8"/><circle cx="105" cy="570" r="4"/><circle cx="62" cy="650" r="5"/>
+    <circle cx="118" cy="720" r="10"/><circle cx="84" cy="780" r="4"/><circle cx="142" cy="835" r="6"/>
+    <circle cx="1740" cy="420" r="6"/><circle cx="1795" cy="510" r="4"/><circle cx="1710" cy="600" r="8"/>
+  </g>
+
+  <!-- reef silhouettes -->
+  <g opacity=".50">
+    <path d="M0 1000 C95 940 165 970 250 925 340 878 400 940 470 900 560 850 650 915 735 905L735 1200H0Z" fill="#082a42"/>
+    <path d="M1135 1040 C1210 980 1270 1010 1335 955 1400 900 1460 955 1515 915 1590 860 1640 925 1705 875 1790 815 1850 885 1920 835V1200H1135Z" fill="#08263d"/>
+  </g>
+
+  <!-- abstract coral left -->
+  <g stroke-linecap="round" fill="none" opacity=".68">
+    <path d="M5 1200 C25 1100 10 1045 55 980 M55 1125 C95 1078 105 1038 95 985 M95 1180 C145 1110 150 1045 135 980 M145 1170 C205 1120 220 1055 205 1005 M205 1190 C260 1125 278 1080 265 1028" stroke="#7b4d83" stroke-width="24"/>
+    <path d="M16 1200 C40 1102 55 1060 52 1012 M88 1198 C112 1120 125 1080 119 1030 M164 1200 C195 1134 198 1095 194 1045 M242 1200 C272 1140 292 1110 292 1065" stroke="#d06f83" stroke-width="11"/>
+  </g>
+
+  <!-- abstract coral right -->
+  <g opacity=".55">
+    <circle cx="1780" cy="1040" r="98" fill="#3a2f63"/>
+    <circle cx="1885" cy="1080" r="132" fill="#493466"/>
+    <circle cx="1675" cy="1120" r="95" fill="#16485b"/>
+    <path d="M1735 1105c30-110 12-175 58-230 8 55 23 92 58 115-22 23-39 59-44 115z" fill="#3e8d73"/>
+    <path d="M1830 1110c22-105 0-142 42-205 18 56 28 91 67 123-31 16-54 44-68 82z" fill="#6b5a9d"/>
+  </g>
+
+  <!-- simple clownfish accent -->
+  <g transform="translate(195 945) rotate(-8)">
+    <ellipse cx="0" cy="0" rx="72" ry="42" fill="#f47a20" opacity=".94"/>
+    <path d="M-70 0l-48-35 8 35-8 35z" fill="#f47a20"/>
+    <path d="M-30-39c-8 28-8 50 0 78" stroke="#fff" stroke-width="16" opacity=".95"/>
+    <path d="M28-37c-9 27-9 48 1 75" stroke="#fff" stroke-width="14" opacity=".95"/>
+    <circle cx="43" cy="-8" r="5" fill="#071e2e"/>
+    <path d="M-74-12c10-17 18-26 30-33" stroke="#101e28" stroke-width="7"/>
+    <path d="M-72 14c12 18 21 25 33 31" stroke="#101e28" stroke-width="7"/>
+  </g>
+
+  <rect width="1920" height="1200" fill="#00182b" opacity=".10"/>
+</svg>

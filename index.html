@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#073b5c">
+  <meta name="theme-color" content="#012b4f">
   <title>Straits Aquatics Auctions</title>
   <meta name="description" content="Live auctions from Straits Aquatics, Gibraltar.">
   <link rel="stylesheet" href="auction.css">
@@ -11,13 +11,17 @@
 <body>
   <div id="app">
     <header class="site-header">
-      <div class="brand-wrap">
-        <div class="brand-mark">SA</div>
-        <div>
-          <div class="brand-name">Straits Aquatics</div>
-          <div class="brand-sub">Live Auctions</div>
+      <a class="brand-wrap" href="./" aria-label="Straits Aquatics Auctions home">
+        <img class="brand-logo" src="straits-logo.png" alt="Straits Aquatics"
+             onerror="this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden')">
+        <div class="brand-fallback hidden">
+          <div class="brand-fish">🐠</div>
+          <div>
+            <div class="brand-name"><span>STRAITS</span> <b>AQUATICS</b></div>
+            <div class="brand-sub">— LIVE AUCTIONS —</div>
+          </div>
         </div>
-      </div>
+      </a>
       <div class="header-actions">
         <button id="myAuctionsBtn" class="btn btn-ghost hidden">My Auctions</button>
         <button id="authBtn" class="btn btn-primary">Sign in / Register</button>
