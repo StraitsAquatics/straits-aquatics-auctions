@@ -506,14 +506,15 @@
       return;
     }
 
-    // Notify the previous leading bidder by email. The bid remains valid even if email delivery fails.
+    // Send the bidder a confirmation email and, where applicable, notify the previous leader.
+    // The bid remains valid even if email delivery fails.
     const placedBid = Array.isArray(data) ? data[0] : data;
     if (placedBid?.bid_id) {
       sb.functions.invoke('auction-email', {
-        body: { action: 'outbid', auction_id: auctionId, bid_id: placedBid.bid_id }
+        body: { action: 'bid_event', auction_id: auctionId, bid_id: placedBid.bid_id }
       }).then(({ error }) => {
-        if (error) console.warn('Outbid notification email could not be sent:', error);
-      }).catch(err => console.warn('Outbid notification email failed:', err));
+        if (error) console.warn('Auction bid email notification could not be sent:', error);
+      }).catch(err => console.warn('Auction bid email notification failed:', err));
     }
 
     showToast(`Bid accepted at ${money(amount, a.currency)}`);
