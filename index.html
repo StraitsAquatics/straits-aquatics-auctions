@@ -22,37 +22,45 @@
           </div>
         </div>
       </a>
-      <div class="header-actions">
-        <button id="myAuctionsBtn" class="btn btn-ghost hidden">My Auctions</button>
-        <button id="authBtn" class="btn btn-primary">Sign in / Register</button>
+      <div class="header-right">
+        <div class="language-switcher" role="group" aria-label="Language">
+          <button class="lang-btn" data-lang="en" type="button" title="English" aria-label="English">🇬🇧</button>
+          <button class="lang-btn" data-lang="es" type="button" title="Español" aria-label="Español">🇪🇸</button>
+          <button class="lang-btn" data-lang="pt" type="button" title="Português" aria-label="Português">🇵🇹</button>
+        </div>
+        <div class="header-actions">
+          <button id="myAuctionsBtn" class="btn btn-ghost hidden" data-i18n="myAuctions">My Auctions</button>
+          <button id="authBtn" class="btn btn-primary">Sign in / Register</button>
+        </div>
       </div>
     </header>
 
     <main class="page-shell">
       <section class="hero">
         <div>
-          <span class="eyebrow">STRAITS AQUATICS AUCTIONS</span>
-          <h1>Bid live. Win your item. Choose collection or delivery.</h1>
-          <p>
+          <span class="eyebrow" data-i18n="heroEyebrow">STRAITS AQUATICS AUCTIONS</span>
+          <h1 data-i18n="heroTitle">Bid live. Win your item. Choose collection or delivery.</h1>
+          <p data-i18n="heroText">
             Browse current auctions from Straits Aquatics. Registration is free and only required when you want to bid.
           </p>
         </div>
         <div class="delivery-card">
-          <strong>Delivery after winning</strong>
-          <span>🏪 Shop collection — <b>FREE</b></span>
-          <span>🚚 Gibraltar delivery — <b>£7.50</b></span>
-          <span>📦 Spain &amp; Portugal — <b>€18</b></span>
+          <strong data-i18n="deliveryAfterWinning">Delivery after winning</strong>
+          <span id="deliveryCollectionStatic">🏪 Shop collection — <b>FREE</b></span>
+          <span id="deliveryGibraltarStatic">🚚 Gibraltar delivery — <b>£7.50</b></span>
+          <span id="deliveryIberiaStatic">📦 Spain &amp; Portugal — <b>€18</b></span>
+          <small id="fxNote" class="fx-note hidden"></small>
         </div>
       </section>
 
       <section class="toolbar">
         <div class="tabs" role="tablist">
-          <button class="tab active" data-filter="live">Live</button>
-          <button class="tab" data-filter="upcoming">Upcoming</button>
-          <button class="tab" data-filter="ended">Ended</button>
-          <button class="tab" data-filter="all">All</button>
+          <button class="tab active" data-filter="live" data-i18n="live">Live</button>
+          <button class="tab" data-filter="upcoming" data-i18n="upcoming">Upcoming</button>
+          <button class="tab" data-filter="ended" data-i18n="ended">Ended</button>
+          <button class="tab" data-filter="all" data-i18n="all">All</button>
         </div>
-        <button id="refreshBtn" class="btn btn-ghost btn-small">↻ Refresh</button>
+        <button id="refreshBtn" class="btn btn-ghost btn-small"><span aria-hidden="true">↻</span> <span data-i18n="refresh">Refresh</span></button>
       </section>
 
       <div id="statusBanner" class="status-banner hidden"></div>
@@ -61,13 +69,13 @@
 
       <section id="emptyState" class="empty-state hidden">
         <div class="empty-icon">🐠</div>
-        <h2>No auctions here right now</h2>
-        <p>Check back soon for new livestock, coral and equipment auctions.</p>
+        <h2 data-i18n="emptyTitle">No auctions here right now</h2>
+        <p data-i18n="emptyText">Check back soon for new livestock, coral and equipment auctions.</p>
       </section>
 
       <footer class="site-footer">
         <div>Straits Aquatics · Gibraltar</div>
-        <div class="footer-note">
+        <div class="footer-note" data-i18n="footerTerms">
           By placing a bid, you agree to purchase the item at your winning bid price if you are the highest eligible bidder when the auction closes.
         </div>
       </footer>
@@ -88,27 +96,27 @@
       <button class="modal-close" data-close="authModal" aria-label="Close">×</button>
 
       <div id="authEmailStep">
-        <span class="eyebrow">BIDDER SIGN IN</span>
-        <h2>Sign in or register</h2>
-        <p class="muted">Enter your email address and we’ll send you a 6-digit one-time code.</p>
+        <span class="eyebrow" data-i18n="bidderSignIn">BIDDER SIGN IN</span>
+        <h2 data-i18n="signInOrRegister">Sign in or register</h2>
+        <p class="muted" data-i18n="emailInstruction">Enter your email address and we’ll send you a 6-digit one-time code.</p>
 
-        <label class="field-label" for="authEmail">Email address</label>
+        <label class="field-label" for="authEmail" data-i18n="emailAddress">Email address</label>
         <input id="authEmail" class="field" type="email" autocomplete="email" placeholder="you@example.com">
 
-        <button id="sendOtpBtn" class="btn btn-primary btn-block">Send login code</button>
+        <button id="sendOtpBtn" class="btn btn-primary btn-block" data-i18n="sendLoginCode">Send login code</button>
         <div id="authEmailMessage" class="form-message"></div>
       </div>
 
       <div id="authCodeStep" class="hidden">
-        <span class="eyebrow">CHECK YOUR EMAIL</span>
-        <h2>Enter your login code</h2>
-        <p class="muted">We sent a 6-digit code to <strong id="otpEmailDisplay"></strong>.</p>
+        <span class="eyebrow" data-i18n="checkEmail">CHECK YOUR EMAIL</span>
+        <h2 data-i18n="enterLoginCode">Enter your login code</h2>
+        <p class="muted"><span data-i18n="sentCode">We sent a 6-digit code to</span> <strong id="otpEmailDisplay"></strong>.</p>
 
-        <label class="field-label" for="authCode">6-digit code</label>
+        <label class="field-label" for="authCode" data-i18n="sixDigitCode">6-digit code</label>
         <input id="authCode" class="field otp-field" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="123456">
 
-        <button id="verifyOtpBtn" class="btn btn-primary btn-block">Verify &amp; sign in</button>
-        <button id="backToEmailBtn" class="btn btn-ghost btn-block">Use a different email</button>
+        <button id="verifyOtpBtn" class="btn btn-primary btn-block" data-i18n="verifySignIn">Verify &amp; sign in</button>
+        <button id="backToEmailBtn" class="btn btn-ghost btn-block" data-i18n="differentEmail">Use a different email</button>
         <div id="authCodeMessage" class="form-message"></div>
       </div>
     </div>
@@ -117,22 +125,22 @@
   <!-- Bidder Profile Modal -->
   <div id="profileModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
     <div class="modal modal-narrow">
-      <span class="eyebrow">ONE-TIME REGISTRATION</span>
-      <h2>Complete your bidder profile</h2>
-      <p class="muted">You only do this once. Your full details are visible to Straits Aquatics, while other bidders only see an anonymised name.</p>
+      <span class="eyebrow" data-i18n="oneTimeRegistration">ONE-TIME REGISTRATION</span>
+      <h2 data-i18n="completeBidderProfile">Complete your bidder profile</h2>
+      <p class="muted" data-i18n="profileText">You only do this once. Your full details are visible to Straits Aquatics, while other bidders only see an anonymised name.</p>
 
-      <label class="field-label" for="profileName">Full name</label>
-      <input id="profileName" class="field" type="text" autocomplete="name" placeholder="Full name">
+      <label class="field-label" for="profileName" data-i18n="fullName">Full name</label>
+      <input id="profileName" class="field" type="text" autocomplete="name" placeholder="Full name" data-i18n-placeholder="fullName">
 
-      <label class="field-label" for="profileWhatsapp">Mobile / WhatsApp number</label>
+      <label class="field-label" for="profileWhatsapp" data-i18n="whatsapp">Mobile / WhatsApp number</label>
       <input id="profileWhatsapp" class="field" type="tel" autocomplete="tel" placeholder="+350 ...">
 
       <label class="check-row">
         <input id="profileTerms" type="checkbox">
-        <span>I agree that bids I place are binding if I win the auction.</span>
+        <span data-i18n="bindingAgree">I agree that bids I place are binding if I win the auction.</span>
       </label>
 
-      <button id="saveProfileBtn" class="btn btn-primary btn-block">Complete registration</button>
+      <button id="saveProfileBtn" class="btn btn-primary btn-block" data-i18n="completeRegistration">Complete registration</button>
       <div id="profileMessage" class="form-message"></div>
     </div>
   </div>
@@ -141,8 +149,8 @@
   <div id="myAuctionsModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
     <div class="modal modal-wide">
       <button class="modal-close" data-close="myAuctionsModal" aria-label="Close">×</button>
-      <span class="eyebrow">YOUR ACCOUNT</span>
-      <h2>My Auctions</h2>
+      <span class="eyebrow" data-i18n="yourAccount">YOUR ACCOUNT</span>
+      <h2 data-i18n="myAuctions">My Auctions</h2>
       <div id="myAuctionsContent"></div>
     </div>
   </div>

@@ -1,34 +1,17 @@
-# Straits Aquatics Auctions — Ocean Theme v2
+# Straits Aquatics Auctions — Multilingual public site
 
-This is the public Straits Aquatics auction site with the deep-blue underwater theme.
+Ready-to-upload replacement for the public `straits-aquatics-auctions` GitHub Pages repository.
 
-## Upload to GitHub
+## Added
+- 🇬🇧 English / 🇪🇸 Spanish / 🇵🇹 Portuguese language buttons in the header.
+- Language preference is remembered on the customer's device.
+- Spanish and Portuguese views display monetary values in EUR.
+- Fixed conversion: **£1 = €1.20**.
+- If an auction is internally stored in GBP, an EUR bid entered by a Spanish/Portuguese customer is converted back to GBP before the secure Supabase bid RPC is called.
+- Existing auctions, authentication, bid emails, Buy It Now, delivery selection and realtime updates remain intact.
 
-Replace the files in the public repository:
+## Important
+Auction titles, descriptions, categories and custom delivery notes are seller-authored content and remain exactly as entered in Auction Manager. The site interface around them is translated.
 
-`StraitsAquatics/straits-aquatics-auctions`
-
-with the files in this package.
-
-Keep `auction.js` unchanged — this package preserves the working Supabase Auth, bidding, Buy It Now, winner and delivery logic.
-
-## Add your real logo
-
-Upload your transparent Straits Aquatics logo PNG to the repository root with the exact filename:
-
-`straits-logo.png`
-
-The header is already coded to load that image. Until the logo file exists, the site displays a temporary text/fish fallback rather than a broken image.
-
-Recommended logo file:
-- Transparent PNG
-- Full Straits Aquatics logo/wordmark if available
-- Roughly 700–1200 px wide for a crisp desktop header
-
-## New visual asset
-
-`ocean-bg.svg` is the coded underwater background. It contains no baked-in website text or buttons, so the real HTML remains responsive and interactive.
-
-## Deployment
-
-Commit the replacement files to `main`. GitHub Pages will redeploy automatically.
+## Deploy
+Upload the files in this folder to the root of the public GitHub repository `StraitsAquatics/straits-aquatics-auctions`, replacing existing files with the same names, then commit.
