@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#073b5c">
+  <title>Straits Aquatics Auctions</title>
+  <meta name="description" content="Live auctions from Straits Aquatics, Gibraltar.">
+  <link rel="stylesheet" href="auction.css">
+</head>
+<body>
+  <div id="app">
+    <header class="site-header">
+      <div class="brand-wrap">
+        <div class="brand-mark">SA</div>
+        <div>
+          <div class="brand-name">Straits Aquatics</div>
+          <div class="brand-sub">Live Auctions</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="myAuctionsBtn" class="btn btn-ghost hidden">My Auctions</button>
+        <button id="authBtn" class="btn btn-primary">Sign in / Register</button>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero">
+        <div>
+          <span class="eyebrow">STRAITS AQUATICS AUCTIONS</span>
+          <h1>Bid live. Win your item. Choose collection or delivery.</h1>
+          <p>
+            Browse current auctions from Straits Aquatics. Registration is free and only required when you want to bid.
+          </p>
+        </div>
+        <div class="delivery-card">
+          <strong>Delivery after winning</strong>
+          <span>🏪 Shop collection — <b>FREE</b></span>
+          <span>🚚 Gibraltar delivery — <b>£7.50</b></span>
+          <span>📦 Spain &amp; Portugal — <b>€18</b></span>
+        </div>
+      </section>
+
+      <section class="toolbar">
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-filter="live">Live</button>
+          <button class="tab" data-filter="upcoming">Upcoming</button>
+          <button class="tab" data-filter="ended">Ended</button>
+          <button class="tab" data-filter="all">All</button>
+        </div>
+        <button id="refreshBtn" class="btn btn-ghost btn-small">↻ Refresh</button>
+      </section>
+
+      <div id="statusBanner" class="status-banner hidden"></div>
+
+      <section id="auctionGrid" class="auction-grid" aria-live="polite"></section>
+
+      <section id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">🐠</div>
+        <h2>No auctions here right now</h2>
+        <p>Check back soon for new livestock, coral and equipment auctions.</p>
+      </section>
+
+      <footer class="site-footer">
+        <div>Straits Aquatics · Gibraltar</div>
+        <div class="footer-note">
+          By placing a bid, you agree to purchase the item at your winning bid price if you are the highest eligible bidder when the auction closes.
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Auction Detail Modal -->
+  <div id="auctionModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal modal-wide">
+      <button class="modal-close" data-close="auctionModal" aria-label="Close">×</button>
+      <div id="auctionModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Authentication Modal -->
+  <div id="authModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal modal-narrow">
+      <button class="modal-close" data-close="authModal" aria-label="Close">×</button>
+
+      <div id="authEmailStep">
+        <span class="eyebrow">BIDDER SIGN IN</span>
+        <h2>Sign in or register</h2>
+        <p class="muted">Enter your email address and we’ll send you a 6-digit one-time code.</p>
+
+        <label class="field-label" for="authEmail">Email address</label>
+        <input id="authEmail" class="field" type="email" autocomplete="email" placeholder="you@example.com">
+
+        <button id="sendOtpBtn" class="btn btn-primary btn-block">Send login code</button>
+        <div id="authEmailMessage" class="form-message"></div>
+      </div>
+
+      <div id="authCodeStep" class="hidden">
+        <span class="eyebrow">CHECK YOUR EMAIL</span>
+        <h2>Enter your login code</h2>
+        <p class="muted">We sent a 6-digit code to <strong id="otpEmailDisplay"></strong>.</p>
+
+        <label class="field-label" for="authCode">6-digit code</label>
+        <input id="authCode" class="field otp-field" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="123456">
+
+        <button id="verifyOtpBtn" class="btn btn-primary btn-block">Verify &amp; sign in</button>
+        <button id="backToEmailBtn" class="btn btn-ghost btn-block">Use a different email</button>
+        <div id="authCodeMessage" class="form-message"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bidder Profile Modal -->
+  <div id="profileModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal modal-narrow">
+      <span class="eyebrow">ONE-TIME REGISTRATION</span>
+      <h2>Complete your bidder profile</h2>
+      <p class="muted">You only do this once. Your full details are visible to Straits Aquatics, while other bidders only see an anonymised name.</p>
+
+      <label class="field-label" for="profileName">Full name</label>
+      <input id="profileName" class="field" type="text" autocomplete="name" placeholder="Full name">
+
+      <label class="field-label" for="profileWhatsapp">Mobile / WhatsApp number</label>
+      <input id="profileWhatsapp" class="field" type="tel" autocomplete="tel" placeholder="+350 ...">
+
+      <label class="check-row">
+        <input id="profileTerms" type="checkbox">
+        <span>I agree that bids I place are binding if I win the auction.</span>
+      </label>
+
+      <button id="saveProfileBtn" class="btn btn-primary btn-block">Complete registration</button>
+      <div id="profileMessage" class="form-message"></div>
+    </div>
+  </div>
+
+  <!-- My Auctions Modal -->
+  <div id="myAuctionsModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal modal-wide">
+      <button class="modal-close" data-close="myAuctionsModal" aria-label="Close">×</button>
+      <span class="eyebrow">YOUR ACCOUNT</span>
+      <h2>My Auctions</h2>
+      <div id="myAuctionsContent"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden" role="status"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auction.js"></script>
+</body>
+</html>
