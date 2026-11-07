@@ -506,6 +506,16 @@
       return;
     }
 
+    // Notify the previous leading bidder by email. The bid remains valid even if email delivery fails.
+    const placedBid = Array.isArray(data) ? data[0] : data;
+    if (placedBid?.bid_id) {
+      sb.functions.invoke('auction-email', {
+        body: { action: 'outbid', auction_id: auctionId, bid_id: placedBid.bid_id }
+      }).then(({ error }) => {
+        if (error) console.warn('Outbid notification email could not be sent:', error);
+      }).catch(err => console.warn('Outbid notification email failed:', err));
+    }
+
     showToast(`Bid accepted at ${money(amount, a.currency)}`);
     await loadAuctions(false);
 
@@ -1025,6 +1035,14 @@
     bindEvents();
     await bootstrapAuth();
     await loadAuctions();
+
+    // Direct auction links from notification emails: ?auction=UUID
+    const params = new URLSearchParams(window.location.search);
+    const directAuction = params.get('auction');
+    if (directAuction && state.auctions.some(a => a.id === directAuction)) {
+      await openAuction(directAuction);
+    }
+
     setupRealtime();
     startCountdownTimer();
   }
